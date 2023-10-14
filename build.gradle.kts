@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly(files("libs/velocity-3.2.0-SNAPSHOT-260.jar"))
+    compileOnly(files("libs/velocity-3.2.0-SNAPSHOT-275.jar"))
     compileOnly(libs.velocity)
     compileOnly(libs.netty)
     annotationProcessor(libs.velocity)

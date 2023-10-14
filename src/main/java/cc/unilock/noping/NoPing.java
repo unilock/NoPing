@@ -8,6 +8,7 @@ import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
 import com.velocitypowered.proxy.VelocityServer;
 import com.velocitypowered.proxy.network.ConnectionManager;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
 import org.slf4j.Logger;
 
@@ -42,7 +43,7 @@ public final class NoPing {
 		var cmField = ((VelocityServer) proxy).getClass().getDeclaredField("cm");
 		cmField.setAccessible(true);
 
-		ChannelInitializer<?> oldInit = ((ConnectionManager) cmField.get(proxy)).getServerChannelInitializer().get();
+		ChannelInitializer<Channel> oldInit = ((ConnectionManager) cmField.get(proxy)).getServerChannelInitializer().get();
 		((ConnectionManager) cmField.get(proxy)).getServerChannelInitializer().set(new NoPingInitializer((VelocityServer) proxy, oldInit));
 	}
 }
